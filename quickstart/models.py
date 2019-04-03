@@ -44,12 +44,6 @@ class Package_opt(models.Model):
     package_Access_Rules = models.IntegerField()
 
 
-class Training(models.Model):
-    training_Name = models.CharField(max_length=20)
-    equipment = models.ManyToManyField()
-    note = models.TextField()
-
-
 class Facility(models.Model):
     facility_Name = models.CharField(max_length=50, null=False)
     invite_New = models.BooleanField()
@@ -93,9 +87,9 @@ class User_account(models.Model):
 
     # Foreign Key section
 
-    billing_Opt = models.ForeignKey(Billing_opt)
-    training = models.ForeignKey(Training)
-    package_Opt = models.ForeignKey(Package_opt)
+    billing_Opt = models.ForeignKey(Billing_opt, on_delete=models.SET_NULL)
+    training = models.ForeignKey(Training, on_delete=models.SET_NULL)
+    package_Opt = models.ForeignKey(Package_opt, on_delete=models.SET_NULL)
 
 
 class Equipment(models.Model):
@@ -118,18 +112,24 @@ class Equipment(models.Model):
 
     # Foreign Key
 
-    equipment_Bridge = models.ForeignKey(Bridge)
+    equipment_Bridge = models.ForeignKey(Bridge, on_delete=models.SET_NULL)
+
+
+class Training(models.Model):
+    training_Name = models.CharField(max_length=20)
+    equipment = models.ManyToManyField(Equipment)
+    note = models.TextField()
 
 
 class Activity_log(models.Model):
     log_Date = models.DateTimeField()
     log_Time = models.TimeField()
-    log_Equipment = models.ForeignKey(Equipment)
-    log_User = models.ForeignKey(User_account)
+    log_Equipment = models.ForeignKey(Equipment, on_delete=models.SET_NULL)
+    log_User = models.ForeignKey(User_account, on_delete=models.SET_NULL)
 
 
 class Booking_schedule(models.Model):
     booking_Start = models.DateTimeField()
     booking_End = models.DateTimeField()
-    booking_Equipment = models.ForeignKey(Equipment)
-    booking_User = models.ForeignKey(User_account)
+    booking_Equipment = models.ForeignKey(Equipment, on_delete=models.SET_NULL)
+    booking_User = models.ForeignKey(User_account, on_delete=models.SET_NULL)
