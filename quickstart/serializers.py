@@ -51,7 +51,7 @@ class FacilitySerializer(serializers.ModelSerializer):
     openh = Opening_hoursSerializer(many=True)
     bookopt = Booking_optSerializer(many=True)
     package = Package_optSerializer(many=True)
-    
+
     class Meta:
         model = Facility
         fields = "__all__"

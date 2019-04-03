@@ -64,34 +64,6 @@ class Facility(models.Model):
     contact_Phone = models.IntegerField()
 
 
-class User_account(models.Model):
-    # Basic info
-    role = models.BooleanField()
-    first_Name = models.CharField(max_length=20)
-    last_Name = models.CharField(max_length=20)
-    email = models.EmailField()
-    password = models.CharField(max_length=20)
-    phone = models.IntegerField()
-    date_Birth = models.DateField()
-    Company = models.CharField(max_length=20)
-    note = models.TextField()
-    tax_Exempt = models.BooleanField()
-
-    # Adress info
-
-    address = models.CharField(max_length=30)
-    city = models.CharField(max_length=20)
-    zip_Code = models.IntegerField()
-    country = models.CharField(max_length=20)
-    region = models.CharField(max_length=20)
-
-    # Foreign Key section
-
-    billing_Opt = models.ForeignKey(Billing_opt, on_delete=models.SET_NULL)
-    training = models.ForeignKey(Training, on_delete=models.SET_NULL)
-    package_Opt = models.ForeignKey(Package_opt, on_delete=models.SET_NULL)
-
-
 class Equipment(models.Model):
     # Basic info
 
@@ -119,6 +91,34 @@ class Training(models.Model):
     training_Name = models.CharField(max_length=20)
     equipment = models.ManyToManyField(Equipment)
     note = models.TextField()
+
+
+class User_account(models.Model):
+    # Basic info
+    role = models.BooleanField()
+    first_Name = models.CharField(max_length=20)
+    last_Name = models.CharField(max_length=20)
+    email = models.EmailField()
+    password = models.CharField(max_length=20)
+    phone = models.IntegerField()
+    date_Birth = models.DateField()
+    Company = models.CharField(max_length=20)
+    note = models.TextField()
+    tax_Exempt = models.BooleanField()
+
+    # Adress info
+
+    address = models.CharField(max_length=30)
+    city = models.CharField(max_length=20)
+    zip_Code = models.IntegerField()
+    country = models.CharField(max_length=20)
+    region = models.CharField(max_length=20)
+
+    # Foreign Key section
+
+    billing_Opt = models.ForeignKey(Billing_opt, on_delete=models.SET_NULL)
+    training = models.ForeignKey(Training, on_delete=models.SET_NULL)
+    package_Opt = models.ForeignKey(Package_opt, on_delete=models.SET_NULL)
 
 
 class Activity_log(models.Model):
