@@ -34,7 +34,7 @@ class Booking_opt(models.Model):
 
 class Package_opt(models.Model):
     package_Name = models.CharField(max_length=30)
-    package_Describ = models.CharField(max_lenght=50)
+    package_Describ = models.CharField(max_length=50)
     package_Note = models.TextField()
     package_Price_Reccuring = models.IntegerField()
     package_Price_Onetime = models.IntegerField()
