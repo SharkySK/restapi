@@ -10,5 +10,5 @@ router.register(r'custom_name', views.UserViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-auth/', include('restapi.urls', namespace='quickstart'))
+    path('api-auth/', include('restapi.urls'))
 ]
