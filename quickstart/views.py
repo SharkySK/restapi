@@ -27,4 +27,6 @@ class FacilityViewSet(APIView):
         """
         Return a list of all users.
         """
-        return Response(400)
+	queryset = Facility.objects.all()
+	sc = FacilitySerializer
+        return Response(sc, 200)
