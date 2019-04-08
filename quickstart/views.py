@@ -22,11 +22,10 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 
-class FacilityViewSet(APIView):
-    def list(self, request):
+class FacilityViewSet(viewsets.ModelViewSet):
         """
         Return a list of all users.
         """
-	queryset = Facility.objects.all()
-	sc = FacilitySerializer
-        return Response(sc, 200)
+        queryset = Facility.objects.all()
+        sc = FacilitySerializer
+
