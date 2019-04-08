@@ -2,7 +2,8 @@ from django.contrib.auth.models import User, Group
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets
-from quickstart.serializers import *
+from .serializers import *
+from .models import *
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -21,9 +22,9 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 
-class FacilityViewSet(viewsets.ModelViewSet):
+class FacilityViewSet(APIView):
     def list(self, request):
         """
         Return a list of all users.
         """
-        return Response(Facility)
+        return Response(400)
