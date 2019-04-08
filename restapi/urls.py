@@ -9,6 +9,5 @@ router.register(r'custom_name', views.UserViewSet)
 # Additionally, we include login URLs for the browsable API.
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('restapi.urls', namespace="restapi"))
+    path('', include(router.urls))
 ]
