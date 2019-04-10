@@ -52,10 +52,10 @@ class Facility(models.Model):
 
     # Foreign Keys
 
-    billing_Opt = models.ForeignKey(Billing_opt, on_delete=models.SET_NULL, null=True)
-    opening_Hours = models.ForeignKey(Opening_hours, on_delete=models.SET_NULL, null=True)
-    booking_Opt = models.ForeignKey(Booking_opt, on_delete=models.SET_NULL, null=True)
-    package_Opt = models.ForeignKey(Package_opt, on_delete=models.SET_NULL, null=True)
+    billing_Opt = models.ForeignKey(Billing_opt, on_delete=models.SET_NULL, null=True, blank=True, default=None)
+    opening_Hours = models.ForeignKey(Opening_hours, on_delete=models.SET_NULL, null=True, blank=True, default=None)
+    booking_Opt = models.ForeignKey(Booking_opt, on_delete=models.SET_NULL, null=True, blank=True, default=None)
+    package_Opt = models.ForeignKey(Package_opt, on_delete=models.SET_NULL, null=True, blank=True, default=None)
 
     # Contact info
 
@@ -89,7 +89,7 @@ class Equipment(models.Model):
 
     # Foreign Key
 
-    equipment_Bridge = models.ForeignKey(Bridge, on_delete=models.SET_NULL, null=True)
+    equipment_Bridge = models.ForeignKey(Bridge, on_delete=models.SET_NULL, null=True, blank=True, default=None)
     training = models.ManyToManyField(Training)
 
 
@@ -116,20 +116,20 @@ class User_account(models.Model):
 
     # Foreign Key section
 
-    billing_Opt = models.ForeignKey(Billing_opt, on_delete=models.SET_NULL, null=True)
-    training = models.ForeignKey(Training, on_delete=models.SET_NULL, null=True)
-    package_Opt = models.ForeignKey(Package_opt, on_delete=models.SET_NULL, null=True)
+    billing_Opt = models.ForeignKey(Billing_opt, on_delete=models.SET_NULL, null=True, blank=True, default=None)
+    training = models.ForeignKey(Training, on_delete=models.SET_NULL, null=True, blank=True, default=None)
+    package_Opt = models.ForeignKey(Package_opt, on_delete=models.SET_NULL, null=True, blank=True, default=None)
 
 
 class Activity_log(models.Model):
     log_Date = models.DateTimeField()
     log_Time = models.TimeField()
-    log_Equipment = models.ForeignKey(Equipment, on_delete=models.SET_NULL, null=True)
-    log_User = models.ForeignKey(User_account, on_delete=models.SET_NULL, null=True)
+    log_Equipment = models.ForeignKey(Equipment, on_delete=models.SET_NULL, null=True, blank=True, default=None)
+    log_User = models.ForeignKey(User_account, on_delete=models.SET_NULL, null=True, blank=True, default=None)
 
 
 class Booking_schedule(models.Model):
     booking_Start = models.DateTimeField()
     booking_End = models.DateTimeField()
-    booking_Equipment = models.ForeignKey(Equipment, on_delete=models.SET_NULL, null=True)
-    booking_User = models.ForeignKey(User_account, on_delete=models.SET_NULL, null=True)
+    booking_Equipment = models.ForeignKey(Equipment, on_delete=models.SET_NULL, null=True, blank=True, default=None)
+    booking_User = models.ForeignKey(User_account, on_delete=models.SET_NULL, null=True, blank=True, default=None)
