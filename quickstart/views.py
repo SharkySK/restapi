@@ -2,6 +2,10 @@ from rest_framework import viewsets
 from .serializers import *
 from .models import *
 
+from django.http import Http404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -41,6 +45,23 @@ class User_accountViewSet(viewsets.ModelViewSet):
     """
     queryset = User_account.objects.all()
     serializer_class = User_accountSerializer
+
+
+class User_verificationViewSet(APIView):
+    """
+    Return user authorised or not
+    """
+
+    def get_object(self, pk):
+        try:
+            return User_account.objects.get(pk=pk)
+        except User_account.DoesNotExist:
+            raise Http404
+
+    def get(self, request,pk, format=None):
+        user = User_account.get_object(pk)
+        serializer = User_accountSerializer(user, data=request.data)
+        return Response(serializer.data)
 
 
 class Activity_logViewSet(viewsets.ModelViewSet):
