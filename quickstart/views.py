@@ -47,7 +47,7 @@ class User_accountViewSet(viewsets.ModelViewSet):
     serializer_class = User_accountSerializer
 
 
-class User_verificationViewSet(APIView):
+class User_verification(APIView):
     """
     Return user authorised or not
     """

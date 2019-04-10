@@ -16,7 +16,7 @@ router.register(r'package', views.Package_optViewSet)
 router.register(r'billing_opt', views.Billing_optViewSet)
 router.register(r'opening_hours', views.Opening_hoursViewSet)
 router.register(r'users', views.UserViewSet)
-router.register(r'users_ver',views.User_verificationViewSet)
+router.register(r'users_ver',views.User_verification)
 # Wire up our API using automatic URL routing
 # Additionally, we include login URLs for the browsable API.
 
