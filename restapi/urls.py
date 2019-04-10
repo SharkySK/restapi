@@ -21,6 +21,6 @@ router.register(r'users', views.UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user_ver/<int:pk>/', views.User_verification.as_view()),
+    path('user_ver/<int:pk>/', views.User_verificationViewSet),
     path('', include(router.urls))
 ]
