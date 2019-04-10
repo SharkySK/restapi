@@ -47,21 +47,14 @@ class User_accountViewSet(viewsets.ModelViewSet):
     serializer_class = User_accountSerializer
 
 
-class User_verification(APIView):
+class User_verificationViewSet(viewsets.ModelViewSet):
     """
     Return user authorised or not
     """
-
-    def get_object(self, pk):
-        try:
-            return User_account.objects.get(pk=pk)
-        except User_account.DoesNotExist:
-            raise Http404
-
     def get(self, request,pk, format=None):
-        user = User_account.get_object(pk)
-        serializer = User_accountSerializer(user, data=request.data)
-        return Response(serializer.data)
+        queryset = User_account.objects.get(pk)
+        serializer_class = User_accountSerializer
+        return Response(serializer_class, 200)
 
 
 class Activity_logViewSet(viewsets.ModelViewSet):

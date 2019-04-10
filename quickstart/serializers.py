@@ -63,7 +63,7 @@ class EquipmentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Equipment
-        pass
+        fields = "__all__"
 
 
 class TrainingSerializer(serializers.ModelSerializer):
