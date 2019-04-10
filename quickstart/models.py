@@ -105,6 +105,7 @@ class User_account(models.Model):
     Company = models.CharField(max_length=20)
     note = models.TextField()
     tax_Exempt = models.BooleanField()
+    uid_Tag = models.IntegerField()
 
     # Adress info
 

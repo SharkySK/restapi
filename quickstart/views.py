@@ -51,10 +51,11 @@ class User_verificationViewSet(viewsets.ModelViewSet):
     """
     Return user authorised or not
     """
-    def get(self, request,pk, format=None):
-        queryset = User_account.objects.get(pk)
-        serializer_class = User_accountSerializer
-        return Response(serializer_class, 200)
+    serializer_class = User_verificationSerializer
+
+    def get_queryset(self):
+        user = self.kwargs['uid_Tag']
+        return User_account.objects.filter(uid_tag=user)
 
 
 class Activity_logViewSet(viewsets.ModelViewSet):
