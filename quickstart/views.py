@@ -68,16 +68,16 @@ class User_verificationViewSet(viewsets.ModelViewSet):
         else:
             return Response("No user Found", 404)
 
-    @action(detail=True, methods=['post'])
-    def add_key(self):
-        uid, tag = self.kwargs['uid', 'uid_Tag']
-        queryset = User_account.objects.filter(id=uid)
-        if queryset:
-            queryset.uid_Tag(tag)
-            queryset.save()
-            return queryset
-        else:
-            return Response("No user with this ID", 400)
+    # @action(detail=True, methods=['post'])
+    # def add_key(self):
+    #     uid, tag = self.kwargs['uid', 'uid_Tag']
+    #     queryset = User_account.objects.filter(id=uid)
+    #     if queryset:
+    #         queryset.uid_Tag(tag)
+    #         queryset.save()
+    #         return queryset
+    #     else:
+    #         return Response("No user with this ID", 400)
 
 
 class Activity_logViewSet(viewsets.ModelViewSet):
