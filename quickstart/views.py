@@ -59,25 +59,17 @@ class User_verificationViewSet(viewsets.ModelViewSet):
     Return user authorised or not
     """
     serializer_class = User_verificationSerializer
+    queryset = User_account.objects.all()
 
-    def get_queryset(self):
-        uid_tag, place = self.kwargs['uid_Tag', 'place']
-        queryset = User_account.objects.filter(uid_tag=uid_tag)
-        if queryset:
+    @action(detail=True, methods=['post'])
+    def add_key(self, request):
+        serializer = TestSerializer(data=request.data)
+        queryset = User_account.objects.filter(uid_Tag=serializer.uid_Tag)
+        if queryset & serializer.is_valid():
+            serializer.save()
             return queryset
         else:
-            return Response("No user Found", 404)
-
-    # @action(detail=True, methods=['post'])
-    # def add_key(self):
-    #     uid, tag = self.kwargs['uid', 'uid_Tag']
-    #     queryset = User_account.objects.filter(id=uid)
-    #     if queryset:
-    #         queryset.uid_Tag(tag)
-    #         queryset.save()
-    #         return queryset
-    #     else:
-    #         return Response("No user with this ID", 400)
+            return Response("No user with this ID", 400)
 
 
 class Activity_logViewSet(viewsets.ModelViewSet):
