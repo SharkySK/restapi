@@ -62,19 +62,19 @@ class User_verificationViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         uid_tag, place = self.kwargs['uid_Tag', 'place']
-        user = User_account.objects.filter(uid_tag=uid_tag)
-        if user:
-            return user
+        queryset = User_account.objects.filter(uid_tag=uid_tag)
+        if queryset:
+            return queryset
         else:
             return Response("No user Found", 404)
 
     @action(detail=True, methods=['post'])
     def add_key(self):
         uid, tag = self.kwargs['uid', 'uid_Tag']
-        user = User_account.objects.filter(id=uid)
-        if user:
-            user.uid_Tag(tag)
-            user.save()
+        queryset = User_account.objects.filter(id=uid)
+        if queryset:
+            queryset.uid_Tag(tag)
+            queryset.save()
             return Response("UID_tag set!", 200)
         else:
             return Response("No user with this ID", 400)
