@@ -20,7 +20,8 @@ class TestViewSet(viewsets.ModelViewSet):
         if uid is not None:
             queryset = queryset.filter(uid_Tag=uid)
         else:
-            Response("No such UID!", 400)
+            if queryset:
+                return Response("No such UID!", 400)
         return queryset
 
 

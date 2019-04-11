@@ -52,20 +52,19 @@ class Package_optSerializer(serializers.ModelSerializer):
 
 
 class FacilitySerializer(serializers.ModelSerializer):
-
-    billopt = Billing_optSerializer(many=True)
-    openh = Opening_hoursSerializer(many=True)
-    bookopt = Booking_optSerializer(many=True)
-    package = Package_optSerializer(many=True)
-
+    #
+    # billopt = Billing_optSerializer(many=True)
+    # openh = Opening_hoursSerializer(many=True)
+    # bookopt = Booking_optSerializer(many=True)
+    # package = Package_optSerializer(many=True)
     class Meta:
         model = Facility
         fields = "__all__"
 
 
 class EquipmentSerializer(serializers.ModelSerializer):
-
-    bridge = BridgeSerializer(many=True)
+    #
+    # bridge = BridgeSerializer(many=True)
 
     class Meta:
         model = Equipment
@@ -74,7 +73,7 @@ class EquipmentSerializer(serializers.ModelSerializer):
 
 class TrainingSerializer(serializers.ModelSerializer):
 
-    eq = EquipmentSerializer(read_only=True, many=True)
+    # eq = EquipmentSerializer(read_only=True, many=True)
 
     class Meta:
         model = Training
@@ -83,9 +82,9 @@ class TrainingSerializer(serializers.ModelSerializer):
 
 class User_accountSerializer(serializers.ModelSerializer):
 
-    bilopt = Billing_optSerializer(many=True)
-    training = TrainingSerializer(many=True)
-    pack = Package_optSerializer(many=True)
+    # bilopt = Billing_optSerializer(many=True)
+    # training = TrainingSerializer(many=True)
+    # pack = Package_optSerializer(many=True)
 
     class Meta:
         model = User_account
@@ -94,8 +93,8 @@ class User_accountSerializer(serializers.ModelSerializer):
 
 class User_verificationSerializer(serializers.ModelSerializer):
 
-    pack = Package_optSerializer(many=True)
-    training = TrainingSerializer(many=True)
+    # pack = Package_optSerializer(many=True)
+    # training = TrainingSerializer(many=True)
 
     class Meta:
         model = User_account
@@ -104,8 +103,8 @@ class User_verificationSerializer(serializers.ModelSerializer):
 
 class Activity_logSerializer(serializers.ModelSerializer):
 
-    user = User_accountSerializer(many=True)
-    eq = EquipmentSerializer(many=True)
+    # user = User_accountSerializer(many=True)
+    # eq = EquipmentSerializer(many=True)
 
     class Meta:
         model = Activity_log
@@ -114,8 +113,8 @@ class Activity_logSerializer(serializers.ModelSerializer):
 
 class Booking_scheduleSerializer(serializers.ModelSerializer):
 
-    user = User_accountSerializer(many=True)
-    eq = EquipmentSerializer(many=True)
+    # user = User_accountSerializer(many=True)
+    # eq = EquipmentSerializer(many=True)
 
     class Meta:
         model = Booking_schedule
