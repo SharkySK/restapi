@@ -1,6 +1,11 @@
 from django.db import models
 
 
+class Test(models.Model):
+    uid_Tag = models.CharField(max_length=20)
+    auth = models.BooleanField()
+
+
 class Bridge(models.Model):
     bridge_Name = models.CharField(max_length=50)
     pairing_Key = models.CharField(max_length=20)
