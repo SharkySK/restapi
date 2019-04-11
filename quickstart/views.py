@@ -75,7 +75,7 @@ class User_verificationViewSet(viewsets.ModelViewSet):
         if queryset:
             queryset.uid_Tag(tag)
             queryset.save()
-            return Response("UID_tag set!", 200)
+            return queryset
         else:
             return Response("No user with this ID", 400)
 
