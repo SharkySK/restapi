@@ -6,7 +6,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 
-class testViewSet(viewsets.ModelViewSet):
+class TestViewSet(viewsets.ModelViewSet):
     """
     Returns 200 or 400
     """

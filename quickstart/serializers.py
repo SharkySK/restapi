@@ -99,7 +99,7 @@ class User_verificationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User_account
-        fields = "first_Name, last_Name, training, package_Opt"
+        fields = ("first_Name", "last_Name", "training", "package_Opt")
 
 
 class Activity_logSerializer(serializers.ModelSerializer):
