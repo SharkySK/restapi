@@ -81,8 +81,8 @@ class Equipment(models.Model):
     equipment_Desc = models.TextField()
     equipment_Fee = models.IntegerField()
     power_Consumption = models.IntegerField()
-    busy_Time = models.TimeField()
-    idle_Time = models.TimeField()
+    busy_Time = models.TimeField(null=True)
+    idle_Time = models.TimeField(null=True)
     require_Training = models.BooleanField()
     visible = models.BooleanField()
 
@@ -90,7 +90,7 @@ class Equipment(models.Model):
 
     bookable = models.BooleanField()
     booking_Fee = models.IntegerField()
-    booking_Granul = models.TimeField()
+    booking_Granul = models.IntegerField()
 
     # Foreign Key
 
