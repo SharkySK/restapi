@@ -65,25 +65,6 @@ class User_accountViewSet(viewsets.ModelViewSet):
     serializer_class = User_accountSerializer
 
 
-class User_verificationViewSet(viewsets.ModelViewSet):
-    """
-    Return user authorised or not
-    """
-    serializer_class = User_verificationSerializer
-    queryset = User_account.objects.all()
-
-    def get_queryset(self):
-        """
-        Optionally restricts the returned purchases to a given user,
-        by filtering against a `username` query parameter in the URL.
-        """
-        queryset = User_account.objects.all()
-        uid = self.request.query_params.get('uid', None)
-        if uid is not None:
-            queryset = queryset.filter(uid_Tag=uid)
-        return queryset
-
-
 class Activity_logViewSet(viewsets.ModelViewSet):
     """
     Return a list of all users.

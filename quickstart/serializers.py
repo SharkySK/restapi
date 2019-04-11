@@ -91,16 +91,6 @@ class User_accountSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class User_verificationSerializer(serializers.ModelSerializer):
-
-    # pack = Package_optSerializer(many=True)
-    # training = TrainingSerializer(many=True)
-
-    class Meta:
-        model = User_account
-        fields = ("first_Name", "last_Name", "training", "package_Opt")
-
-
 class Activity_logSerializer(serializers.ModelSerializer):
 
     # user = User_accountSerializer(many=True)
