@@ -2,9 +2,6 @@ from rest_framework import viewsets
 from .serializers import *
 from .models import *
 
-from rest_framework.decorators import action
-from rest_framework.response import Response
-
 
 class TestViewSet(viewsets.ModelViewSet):
     """
@@ -15,8 +12,7 @@ class TestViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """
-        Optionally restricts the returned purchases to a given user,
-        by filtering against a `username` query parameter in the URL.
+        Optionally restricts the returned UID card
         """
         queryset = Test.objects.all()
         uid = self.request.query_params.get('uid', None)
@@ -72,15 +68,16 @@ class User_verificationViewSet(viewsets.ModelViewSet):
     serializer_class = User_verificationSerializer
     queryset = User_account.objects.all()
 
-    @action(detail=True, methods=['post'])
-    def add_key(self, request):
-        serializer = TestSerializer(data=request.data)
-        queryset = User_account.objects.filter(uid_Tag=serializer.uid_Tag)
-        if queryset & serializer.is_valid():
-            serializer.save()
-            return queryset
-        else:
-            return Response("No user with this ID", 400)
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = User_account.objects.all()
+        uid = self.request.query_params.get('uid', None)
+        if uid is not None:
+            queryset = queryset.filter(uid_Tag=uid)
+        return queryset
 
 
 class Activity_logViewSet(viewsets.ModelViewSet):
@@ -104,7 +101,7 @@ class Booking_optViewSet(viewsets.ModelViewSet):
     Return a list of all users.
     """
     queryset = Booking_opt.objects.all()
-    serializer_class = Billing_optSerializer
+    serializer_class = Booking_optSerializer
 
 
 class TrainingViewSet(viewsets.ModelViewSet):
