@@ -2,9 +2,16 @@ from rest_framework import viewsets
 from .serializers import *
 from .models import *
 
-from django.http import Http404
-from rest_framework.views import APIView
+from rest_framework.decorators import action
 from rest_framework.response import Response
+
+
+class testViewSet(viewsets.ModelViewSet):
+    """
+    Returns 200 or 400
+    """
+    queryset = Test.objects.all()
+    serializer_class = TestSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -54,8 +61,23 @@ class User_verificationViewSet(viewsets.ModelViewSet):
     serializer_class = User_verificationSerializer
 
     def get_queryset(self):
-        user = self.kwargs['uid_Tag']
-        return User_account.objects.filter(uid_tag=user)
+        uid_tag, place = self.kwargs['uid_Tag', 'place']
+        user = User_account.objects.filter(uid_tag=uid_tag)
+        if user:
+            return user
+        else:
+            return Response("No user Found", 404)
+
+    @action(detail=True, methods=['post'])
+    def add_key(self):
+        uid, tag = self.kwargs['uid', 'uid_Tag']
+        user = User_account.objects.filter(id=uid)
+        if user:
+            user.uid_Tag(tag)
+            user.save()
+            return Response("UID_tag set!", 200)
+        else:
+            return Response("No user with this ID", 400)
 
 
 class Activity_logViewSet(viewsets.ModelViewSet):

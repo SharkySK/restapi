@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Test(models.Model):
-    uid_Tag = models.CharField(max_length=20)
-    auth = models.BooleanField()
+    uid_Tag = models.CharField(unique=True, max_length=20)
+    auth = models.BooleanField(null=True, default=None, blank=True)
 
 
 class Bridge(models.Model):

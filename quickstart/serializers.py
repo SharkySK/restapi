@@ -3,6 +3,12 @@ from .models import *
 from rest_framework import serializers
 
 
+class TestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Test
+        fields = "__all__"
+
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
