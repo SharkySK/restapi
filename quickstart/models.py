@@ -29,9 +29,9 @@ class Billing_opt(models.Model):
 
 class Booking_opt(models.Model):
     booking_Allows = models.BooleanField()
-    booking_Advance = models.TimeField()
+    booking_Advance = models.IntegerField()
     booking_Limit = models.IntegerField()
-    booking_Overwrite = models.TimeField()
+    booking_Overwrite = models.IntegerField()
     booking_Refund = models.BooleanField()
     booking_Lock = models.IntegerField()
     booking_Info = models.TextField()
