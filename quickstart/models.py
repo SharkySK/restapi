@@ -52,8 +52,8 @@ class Package_opt(models.Model):
 class Facility(models.Model):
     facility_Name = models.CharField(max_length=50, null=False)
     invite_New = models.BooleanField()
-    currency = models.CharField(max_length=50)
-    data_Retention = models.DateField()
+    currency = models.CharField(max_length=10)
+    data_Retention = models.IntegerField()
 
     # Foreign Keys
 

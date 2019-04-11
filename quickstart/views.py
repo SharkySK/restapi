@@ -10,8 +10,18 @@ class TestViewSet(viewsets.ModelViewSet):
     """
     Returns 200 or 400
     """
-    queryset = Test.objects.all()
     serializer_class = TestSerializer
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = Test.objects.all()
+        uid = self.request.query_params.get('uid', None)
+        if uid is not None:
+            queryset = queryset.filter(uid_Tag=uid)
+        return queryset
 
 
 class UserViewSet(viewsets.ModelViewSet):
