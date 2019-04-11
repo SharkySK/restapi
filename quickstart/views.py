@@ -11,6 +11,7 @@ class TestViewSet(viewsets.ModelViewSet):
     Returns 200 or 400
     """
     serializer_class = TestSerializer
+    queryset = Test.objects.all()
 
     def get_queryset(self):
         """
