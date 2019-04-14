@@ -1,7 +1,6 @@
 from rest_framework import viewsets
 from .serializers import *
 from .models import *
-from rest_framework.response import Response
 
 
 class TestViewSet(viewsets.ModelViewSet):
@@ -19,9 +18,6 @@ class TestViewSet(viewsets.ModelViewSet):
         uid = self.request.query_params.get('uid', None)
         if uid is not None:
             queryset = queryset.filter(uid_Tag=uid)
-        else:
-            if queryset:
-                return Response("No such UID!", 400)
         return queryset
 
 
